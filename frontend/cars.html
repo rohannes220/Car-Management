@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Cars</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+
+    <div class="navbar">
+        <a href="index.html">Welcome</a>
+        <a href="cars.html">Cars</a>
+        <a href="sales.html">Sales</a>
+    </div>
+
+    <div class="inventory-card">
+
+        <h1>Car Inventory</h1>
+
+        <div class="inventory-controls">
+            <button>Add Car</button>
+            <button onclick="totalCars()">Total Cars</button>
+            <button onclick="totalAvailable()">Total Available Cars</button>
+            <button onclick="totalSold()">Total Sold Cars</button>
+            <p id="result"></p>
+        </div>
+
+        <table>
+
+            <thead>
+                <tr>
+                    <th>Make</th>
+                    <th>Model</th>
+                    <th>Year</th>
+                    <th>Price</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+
+            <tbody>
+            
+                <tr>
+                    <td>Toyota</td>
+                    <td>Camry</td>
+                    <td>2021</td>
+                    <td>$23000</td>
+                    <td>Available</td>
+                    <td>
+                        <button>Update</button>
+                        <button onclick="deleteRow(this)">Delete</button>
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>Honda</td>
+                    <td>Civic</td>
+                    <td>2020</td>
+                    <td>$20000</td>
+                    <td>Sold</td>
+                    <td>
+                        <button>Update</button>
+                        <button onclick="deleteRow(this)">Delete</button>
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>Ford</td>
+                    <td>Mustang</td>
+                    <td>2019</td>
+                    <td>$27000</td>
+                    <td>Available</td>
+                    <td>
+                        <button>Update</button>
+                        <button onclick="deleteRow(this)">Delete</button>
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>Nissan</td>
+                    <td>Altima</td>
+                    <td>2022</td>
+                    <td>$24000</td>
+                    <td>Available</td>
+                    <td>
+                        <button>Update</button>
+                        <button onclick="deleteRow(this)">Delete</button>
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>BMW</td>
+                    <td>3 Series</td>
+                    <td>2018</td>
+                    <td>$29000</td>
+                    <td>Available</td>
+                    <td>
+                        <button>Update</button>
+                        <button onclick="deleteRow(this)">Delete</button>
+                    </td>
+                </tr>
+            
+            </tbody>
+
+        </table>
+
+    </div>
+
+
+<script src="js/script.js"></script>
+</body>
+
+</html>

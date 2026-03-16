@@ -1,0 +1,162 @@
+[
+  {
+    "_id": 1,
+    "car_id": 2,
+    "customer_name": "David Miller",
+    "sale_price": 20000,
+    "salesperson": "Tony",
+    "sale_date": "2024-01-12"
+  },
+  {
+    "_id": 2,
+    "car_id": 6,
+    "customer_name": "Olivia Johnson",
+    "sale_price": 33000,
+    "salesperson": "Harrison",
+    "sale_date": "2024-01-20"
+  },
+  {
+    "_id": 3,
+    "car_id": 12,
+    "customer_name": "Michael Lee",
+    "sale_price": 26000,
+    "salesperson": "Tim",
+    "sale_date": "2024-02-02"
+  },
+  {
+    "_id": 4,
+    "car_id": 18,
+    "customer_name": "Sophia Davis",
+    "sale_price": 24000,
+    "salesperson": "Rishi",
+    "sale_date": "2024-02-10"
+  },
+  {
+    "_id": 5,
+    "car_id": 23,
+    "customer_name": "James Wilson",
+    "sale_price": 24000,
+    "salesperson": "Bhoomika",
+    "sale_date": "2024-02-18"
+  },
+  {
+    "_id": 6,
+    "car_id": 28,
+    "customer_name": "Emma Martinez",
+    "sale_price": 27000,
+    "salesperson": "Jassem",
+    "sale_date": "2024-02-25"
+  },
+  {
+    "_id": 7,
+    "car_id": 33,
+    "customer_name": "Daniel Brown",
+    "sale_price": 32000,
+    "salesperson": "Mishell",
+    "sale_date": "2024-03-05"
+  },
+  {
+    "_id": 8,
+    "car_id": 38,
+    "customer_name": "Ava Thompson",
+    "sale_price": 29000,
+    "salesperson": "Grace",
+    "sale_date": "2024-03-11"
+  },
+  {
+    "_id": 9,
+    "car_id": 43,
+    "customer_name": "Noah Anderson",
+    "sale_price": 42000,
+    "salesperson": "Tony",
+    "sale_date": "2024-03-20"
+  },
+  {
+    "_id": 10,
+    "car_id": 48,
+    "customer_name": "Isabella Thomas",
+    "sale_price": 47000,
+    "salesperson": "Harrison",
+    "sale_date": "2024-03-28"
+  },
+  {
+    "_id": 11,
+    "car_id": 53,
+    "customer_name": "William Taylor",
+    "sale_price": 30000,
+    "salesperson": "Tim",
+    "sale_date": "2024-04-05"
+  },
+  {
+    "_id": 12,
+    "car_id": 58,
+    "customer_name": "Mia Moore",
+    "sale_price": 48000,
+    "salesperson": "Rishi",
+    "sale_date": "2024-04-12"
+  },
+  {
+    "_id": 13,
+    "car_id": 63,
+    "customer_name": "Benjamin Jackson",
+    "sale_price": 31000,
+    "salesperson": "Bhoomika",
+    "sale_date": "2024-04-18"
+  },
+  {
+    "_id": 14,
+    "car_id": 68,
+    "customer_name": "Charlotte White",
+    "sale_price": 31000,
+    "salesperson": "Jassem",
+    "sale_date": "2024-04-25"
+  },
+  {
+    "_id": 15,
+    "car_id": 73,
+    "customer_name": "Lucas Harris",
+    "sale_price": 42000,
+    "salesperson": "Mishell",
+    "sale_date": "2024-05-02"
+  },
+  {
+    "_id": 16,
+    "car_id": 78,
+    "customer_name": "Amelia Martin",
+    "sale_price": 68000,
+    "salesperson": "Grace",
+    "sale_date": "2024-05-10"
+  },
+  {
+    "_id": 17,
+    "car_id": 82,
+    "customer_name": "Ethan Thompson",
+    "sale_price": 23500,
+    "salesperson": "Tony",
+    "sale_date": "2024-05-18"
+  },
+  {
+    "_id": 18,
+    "car_id": 85,
+    "customer_name": "Harper Garcia",
+    "sale_price": 46000,
+    "salesperson": "Harrison",
+    "sale_date": "2024-05-25"
+  },
+  {
+    "_id": 19,
+    "car_id": 92,
+    "customer_name": "Alexander Martinez",
+    "sale_price": 29500,
+    "salesperson": "Tim",
+    "sale_date": "2024-06-02"
+  },
+  {
+    "_id": 20,
+    "car_id": 95,
+    "customer_name": "Evelyn Robinson",
+    "sale_price": 52000,
+    "salesperson": "Rishi",
+    "sale_date": "2024-06-10"
+  }
+]

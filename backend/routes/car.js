@@ -2,7 +2,6 @@ import express from "express";
 import { ObjectId } from "mongodb";
 
 export default function carsRoutes(db) {
-
   const router = express.Router();
 
   router.get("/", async (req, res) => {
@@ -13,7 +12,6 @@ export default function carsRoutes(db) {
       res.status(500).json({ error: "Error fetching cars" });
     }
   });
-
 
   router.post("/", async (req, res) => {
     try {
@@ -28,46 +26,44 @@ export default function carsRoutes(db) {
         model,
         year,
         price,
-        mileage: 30000,  
-        status: "Available"
+        mileage: 30000,
+        status: "Available",
       };
 
       const result = await db.collection("cars").insertOne(newCar);
 
       res.status(201).json({
         message: "Car added",
-        id: result.insertedId
+        id: result.insertedId,
       });
-
     } catch (error) {
       res.status(500).json({ error: "Error adding car" });
     }
   });
 
   router.put("/:id", async (req, res) => {
-  try {
-    const id = req.params.id;
+    try {
+      const id = req.params.id;
 
-    const result = await db.collection("cars").updateOne(
-      { _id: Number(id) },  
-      {
-        $set: {
-          make: req.body.make,
-          model: req.body.model,
-          year: req.body.year,
-          price: req.body.price,
-          status: req.body.status
-        }
-      }
-    );
+      const result = await db.collection("cars").updateOne(
+        { _id: Number(id) },
+        {
+          $set: {
+            make: req.body.make,
+            model: req.body.model,
+            year: req.body.year,
+            price: req.body.price,
+            status: req.body.status,
+          },
+        },
+      );
 
-    res.json(result);
-
-  } catch (error) {
-    console.error(error);
-    res.status(500).send("Error updating car");
-  }
-});
+      res.json(result);
+    } catch (error) {
+      console.error(error);
+      res.status(500).send("Error updating car");
+    }
+  });
 
   router.delete("/:id", async (req, res) => {
     try {
@@ -78,7 +74,7 @@ export default function carsRoutes(db) {
       }
 
       const result = await db.collection("cars").deleteOne({
-        _id: new ObjectId(id)
+        _id: new ObjectId(id),
       });
 
       if (result.deletedCount === 0) {
@@ -86,7 +82,6 @@ export default function carsRoutes(db) {
       }
 
       res.json({ message: "Car deleted" });
-
     } catch (error) {
       res.status(500).json({ error: "Error deleting car" });
     }

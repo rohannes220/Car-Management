@@ -1,16 +1,11 @@
-function loadCars(){
-
-   console.log("STEP 2: loadCars running");
-
+function loadCars() {
   fetch("http://localhost:3000/api/cars")
-    .then(response => response.json())
-    .then(data => {
-
+    .then((response) => response.json())
+    .then((data) => {
       const table = document.getElementById("car-table-body");
       table.innerHTML = "";
 
-      data.forEach(car => {
-
+      data.forEach((car) => {
         const row = document.createElement("tr");
 
         row.setAttribute("data-id", car._id);
@@ -28,17 +23,12 @@ function loadCars(){
         `;
 
         table.appendChild(row);
-
       });
-
     })
-    .catch(error => console.log("Error loading cars:", error));
-
+    .catch((error) => console.log("Error loading cars:", error));
 }
 
-
-async function addCar(){
-
+async function addCar() {
   const make = document.getElementById("make").value;
   const model = document.getElementById("model").value;
   const year = document.getElementById("year").value;
@@ -47,30 +37,26 @@ async function addCar(){
   await fetch("http://localhost:3000/api/cars", {
     method: "POST",
     headers: {
-      "Content-Type": "application/json"
+      "Content-Type": "application/json",
     },
-    body: JSON.stringify({ make, model, year, price })
+    body: JSON.stringify({ make, model, year, price }),
   });
 
   loadCars();
 }
 
-
-async function deleteCar(button){
-
+async function deleteCar(button) {
   let row = button.parentNode.parentNode;
   const id = row.getAttribute("data-id");
 
   await fetch(`http://localhost:3000/api/cars/${id}`, {
-    method: "DELETE"
+    method: "DELETE",
   });
 
   row.remove();
 }
 
-
-function updateCar(button){
-
+function updateCar(button) {
   const row = button.parentNode.parentNode;
 
   const make = row.children[0].innerText;
@@ -93,9 +79,7 @@ function updateCar(button){
   row.parentNode.insertBefore(formRow, row.nextSibling);
 }
 
-
-async function saveUpdate(button){
-
+async function saveUpdate(button) {
   const formRow = button.closest("tr");
   const row = formRow.previousElementSibling;
 
@@ -109,9 +93,9 @@ async function saveUpdate(button){
   await fetch(`http://localhost:3000/api/cars/${id}`, {
     method: "PUT",
     headers: {
-      "Content-Type": "application/json"
+      "Content-Type": "application/json",
     },
-    body: JSON.stringify({ make, model, year, price })
+    body: JSON.stringify({ make, model, year, price }),
   });
 
   const cells = row.querySelectorAll("td");
@@ -124,37 +108,34 @@ async function saveUpdate(button){
   formRow.remove();
 }
 
-function totalCars(){
+function totalCars() {
   let rows = document.querySelectorAll("tbody tr");
-  document.getElementById("result").innerText =
-    "Total Cars: " + rows.length;
+  document.getElementById("result").innerText = "Total Cars: " + rows.length;
 }
 
-function totalAvailable(){
+function totalAvailable() {
   let rows = document.querySelectorAll("tbody tr");
   let count = 0;
 
-  rows.forEach(row => {
+  rows.forEach((row) => {
     let status = row.children[4].innerText;
-    if(status === "Available") count++;
+    if (status === "Available") count++;
   });
 
   document.getElementById("result").innerText =
     "Total Available Cars: " + count;
 }
 
-function totalSold(){
+function totalSold() {
   let rows = document.querySelectorAll("tbody tr");
   let count = 0;
 
-  rows.forEach(row => {
+  rows.forEach((row) => {
     let status = row.children[4].innerText;
-    if(status === "Sold") count++;
+    if (status === "Sold") count++;
   });
 
-  document.getElementById("result").innerText =
-    "Total Sold Cars: " + count;
+  document.getElementById("result").innerText = "Total Sold Cars: " + count;
 }
-
 
 document.addEventListener("DOMContentLoaded", loadCars);

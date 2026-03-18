@@ -1,63 +1,53 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-
-<head>
+  <head>
     <title>Cars</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/styles.css" />
 
     <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-</head>
+  </head>
 
-<body>
-
+  <body>
     <div class="navbar">
-        <a href="index.html">Welcome</a>
-        <a href="cars.html">Cars</a>
-        <a href="sales.html">Sales</a>
+      <a href="index.html">Welcome</a>
+      <a href="cars.html">Cars</a>
+      <a href="sales.html">Sales</a>
     </div>
 
     <div class="inventory-card">
+      <h1>Car Inventory</h1>
 
-        <h1>Car Inventory</h1>
+      <div class="inventory-controls">
+        <div id="react-root"></div>
 
-        <div class="inventory-controls">
+        <button onclick="totalCars()">Total Cars</button>
+        <button onclick="totalAvailable()">Total Available Cars</button>
+        <button onclick="totalSold()">Total Sold Cars</button>
 
-            <div id="react-root"></div>
+        <span id="result"></span>
+      </div>
 
-            <button onclick="totalCars()">Total Cars</button>
-            <button onclick="totalAvailable()">Total Available Cars</button>
-            <button onclick="totalSold()">Total Sold Cars</button>
+      <table>
+        <thead>
+          <tr>
+            <th>Make</th>
+            <th>Model</th>
+            <th>Year</th>
+            <th>Price</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
 
-            <span id="result"></span>
-
-        </div>
-
-        <table>
-
-            <thead>
-                <tr>
-                    <th>Make</th>
-                    <th>Model</th>
-                    <th>Year</th>
-                    <th>Price</th>
-                    <th>Status</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-
-            <tbody id="car-table-body"></tbody>
-
-        </table>
-
+        <tbody id="car-table-body"></tbody>
+      </table>
     </div>
 
     <script src="js/script.js"></script>
     <script type="text/babel" src="react/AddCar.js"></script>
     <script type="text/babel" src="react/UpdateCar.js"></script>
     <script type="text/babel" src="react/main.js"></script>
-
-</body>
-
+  </body>
 </html>

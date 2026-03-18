@@ -1,26 +1,24 @@
 const { useState } = React;
 
-function AddCar(){
-
+function AddCar() {
   const [showForm, setShowForm] = useState(false);
   const [make, setMake] = useState("");
   const [model, setModel] = useState("");
   const [year, setYear] = useState("");
   const [price, setPrice] = useState("");
 
-  async function handleSubmit(){
-
+  async function handleSubmit() {
     await fetch("http://localhost:3000/api/cars", {
       method: "POST",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({
         make,
         model,
         year,
-        price
-      })
+        price,
+      }),
     });
 
     setMake("");
@@ -33,19 +31,12 @@ function AddCar(){
     loadCars();
   }
 
-  return(
-
+  return (
     <div>
-
-  
-      <button onClick={() => setShowForm(!showForm)}>
-        Add Car
-      </button>
+      <button onClick={() => setShowForm(!showForm)}>Add Car</button>
 
       {showForm && (
-
         <div className="react-form">
-
           <input
             placeholder="Make"
             value={make}
@@ -70,15 +61,9 @@ function AddCar(){
             onChange={(e) => setPrice(e.target.value)}
           />
 
-          <button onClick={handleSubmit}>
-            Submit
-          </button>
-
+          <button onClick={handleSubmit}>Submit</button>
         </div>
-
       )}
-
     </div>
-
   );
 }

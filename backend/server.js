@@ -6,9 +6,9 @@ import carsRoutes from "./routes/car.js";
 
 dotenv.config();
 
-const app = express();                
+const app = express();
 
-app.use(cors());                   
+app.use(cors());
 app.use(express.json());
 
 const PORT = 3000;
@@ -35,5 +35,5 @@ await connectDB();
 app.use("/api/cars", carsRoutes(db));
 
 app.listen(PORT, () => {
-  console.log(`🚀 Server running on http://localhost:${PORT}`);
+  console.log(`Server running on http://localhost:${PORT}`);
 });

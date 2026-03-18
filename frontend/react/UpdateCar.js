@@ -1,56 +1,69 @@
-const { useState } = React;
+const { useState, useEffect } = React;
 
 function UpdateCar(){
 
-  const [row,setRow] = useState(null)
-  const [formContainer,setFormContainer] = useState(null)
+  const [row, setRow] = useState(null);
+  const [formContainer, setFormContainer] = useState(null);
 
-  const [make,setMake] = useState("")
-  const [model,setModel] = useState("")
-  const [year,setYear] = useState("")
-  const [price,setPrice] = useState("")
-  const [status,setStatus] = useState("")
+  const [make, setMake] = useState("");
+  const [model, setModel] = useState("");
+  const [year, setYear] = useState("");
+  const [price, setPrice] = useState("");
+  const [status, setStatus] = useState("");
 
-  window.updateCar = function(button){
+  useEffect(() => {
 
-    const r = button.parentElement.parentElement
-    const cells = r.querySelectorAll("td")
+    window.updateCar = function(button){
 
-    setRow(r)
-    setMake(cells[0].innerText)
-    setModel(cells[1].innerText)
-    setYear(cells[2].innerText)
-    setPrice(cells[3].innerText.replace("$",""))
-    setStatus(cells[4].innerText)
+      const r = button.parentElement.parentElement;
+      const cells = r.querySelectorAll("td");
 
-    const newRow = document.createElement("tr")
+      setRow(r);
+      setMake(cells[0].innerText);
+      setModel(cells[1].innerText);
+      setYear(cells[2].innerText);
+      setPrice(cells[3].innerText.replace("$",""));
+      setStatus(cells[4].innerText);
 
-    const td = document.createElement("td")
-    td.colSpan = 6
+      const newRow = document.createElement("tr");
 
-    newRow.appendChild(td)
+      const td = document.createElement("td");
+      td.colSpan = 6;
 
-    r.after(newRow)
+      newRow.appendChild(td);
 
-    setFormContainer(td)
+      r.after(newRow);
+
+      setFormContainer(td);
+    };
+
+  }, []);
+
+  async function handleUpdate(){
+
+    const id = row.getAttribute("data-id");
+
+    await fetch(`http://localhost:3000/api/cars/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        make,
+        model,
+        year,
+        price,
+        status
+      })
+    });
+
+    formContainer.parentElement.remove();
+    setFormContainer(null);
+
+    loadCars();
   }
 
-  function handleUpdate(){
-
-    const cells = row.querySelectorAll("td")
-
-    cells[0].innerText = make
-    cells[1].innerText = model
-    cells[2].innerText = year
-    cells[3].innerText = "$"+price
-    cells[4].innerText = status
-
-    formContainer.parentElement.remove()
-
-    setFormContainer(null)
-  }
-
-  if(!formContainer) return null
+  if (!formContainer) return null;
 
   return ReactDOM.createPortal(
 
@@ -58,14 +71,37 @@ function UpdateCar(){
 
       <h3>Update Car</h3>
 
-      <input value={make} onChange={(e)=>setMake(e.target.value)} />
-      <input value={model} onChange={(e)=>setModel(e.target.value)} />
-      <input value={year} onChange={(e)=>setYear(e.target.value)} />
-      <input value={price} onChange={(e)=>setPrice(e.target.value)} />
+      <input
+        value={make}
+        onChange={(e)=>setMake(e.target.value)}
+        placeholder="Make"
+      />
 
-      <select value={status} onChange={(e)=>setStatus(e.target.value)}>
-        <option>Available</option>
-        <option>Sold</option>
+      <input
+        value={model}
+        onChange={(e)=>setModel(e.target.value)}
+        placeholder="Model"
+      />
+
+      <input
+        value={year}
+        onChange={(e)=>setYear(e.target.value)}
+        placeholder="Year"
+      />
+
+      <input
+        value={price}
+        onChange={(e)=>setPrice(e.target.value)}
+        placeholder="Price"
+      />
+
+
+      <select
+        value={status}
+        onChange={(e)=>setStatus(e.target.value)}
+      >
+        <option value="Available">Available</option>
+        <option value="Sold">Sold</option>
       </select>
 
       <button onClick={handleUpdate}>
@@ -76,6 +112,5 @@ function UpdateCar(){
 
     formContainer
 
-  )
-
+  );
 }

@@ -2,44 +2,43 @@ const { useState } = React;
 
 function AddCar(){
 
-  const [showForm,setShowForm] = useState(false);
-  const [make,setMake] = useState("");
-  const [model,setModel] = useState("");
-  const [year,setYear] = useState("");
-  const [price,setPrice] = useState("");
+  const [showForm, setShowForm] = useState(false);
+  const [make, setMake] = useState("");
+  const [model, setModel] = useState("");
+  const [year, setYear] = useState("");
+  const [price, setPrice] = useState("");
 
-  function handleSubmit(){
+  async function handleSubmit(){
 
-    const table = document.querySelector("tbody");
-
-    const row = document.createElement("tr");
-
-    row.innerHTML = `
-      <td>${make}</td>
-      <td>${model}</td>
-      <td>${year}</td>
-      <td>$${price}</td>
-      <td>Available</td>
-      <td>
-        <button onclick="updateCar(this)">Update</button>
-        <button onclick="deleteRow(this)">Delete</button>
-      </td>
-    `;
-
-    table.appendChild(row);
+    await fetch("http://localhost:3000/api/cars", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        make,
+        model,
+        year,
+        price
+      })
+    });
 
     setMake("");
     setModel("");
     setYear("");
     setPrice("");
+
     setShowForm(false);
+
+    loadCars();
   }
 
   return(
 
     <div>
 
-      <button onClick={()=>setShowForm(!showForm)}>
+  
+      <button onClick={() => setShowForm(!showForm)}>
         Add Car
       </button>
 
@@ -47,12 +46,33 @@ function AddCar(){
 
         <div className="react-form">
 
-          <input placeholder="Make" value={make} onChange={(e)=>setMake(e.target.value)} />
-          <input placeholder="Model" value={model} onChange={(e)=>setModel(e.target.value)} />
-          <input placeholder="Year" value={year} onChange={(e)=>setYear(e.target.value)} />
-          <input placeholder="Price" value={price} onChange={(e)=>setPrice(e.target.value)} />
+          <input
+            placeholder="Make"
+            value={make}
+            onChange={(e) => setMake(e.target.value)}
+          />
 
-          <button onClick={handleSubmit}>Submit</button>
+          <input
+            placeholder="Model"
+            value={model}
+            onChange={(e) => setModel(e.target.value)}
+          />
+
+          <input
+            placeholder="Year"
+            value={year}
+            onChange={(e) => setYear(e.target.value)}
+          />
+
+          <input
+            placeholder="Price"
+            value={price}
+            onChange={(e) => setPrice(e.target.value)}
+          />
+
+          <button onClick={handleSubmit}>
+            Submit
+          </button>
 
         </div>
 

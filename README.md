@@ -18,7 +18,7 @@ Instead of juggling spreadsheets or disconnected systems, this platform brings e
 
 ---
 
-##**Tech Stack**
+**Tech Stack**
 
 
  Frontend  - React (Hooks), HTML, CSS |

@@ -69,7 +69,7 @@ Database - MongoDB                  |
 
    * Record a new sale
    * View or update transactions
-4. Use filters/search to quickly find vehicles
+
 
 ---
 

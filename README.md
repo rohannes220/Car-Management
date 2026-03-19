@@ -106,8 +106,8 @@ http://localhost:3000
 ## **Project Resources**
 
 * Demo Video: *(Add link)*
-* Slides: *(Add link)*
-* Design Document: *(Add link)*
+* Slides: https://docs.google.com/presentation/d/1LvLrOHhLtmGReQEMSHt1McX6s0qMD1Y3b5akLm0p9Wc/edit?usp=sharing
+* Design Document: https://docs.google.com/document/d/1NXgCjUKdv8X7MqSYT4_0Hn3ZCtJRze0rq-wCmTqM0O4/edit?usp=sharing
 
 
 ## **AI Usage**
@@ -134,7 +134,12 @@ It helped clarify:
 
 
 * Home Page
+
+  
 * Cars Page
+
+
+  
 * Sales Page
 
 

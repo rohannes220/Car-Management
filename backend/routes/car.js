@@ -24,8 +24,8 @@ export default function carsRoutes(db) {
       const newCar = {
         make,
         model,
-        year,
-        price,
+        year: Number(year),
+        price: Number(price),
         mileage: 30000,
         status: "Available",
       };
@@ -43,25 +43,32 @@ export default function carsRoutes(db) {
 
   router.put("/:id", async (req, res) => {
     try {
-      const id = req.params.id;
+      const { id } = req.params;
+
+      if (!ObjectId.isValid(id)) {
+        return res.status(400).json({ error: "Invalid ID" });
+      }
 
       const result = await db.collection("cars").updateOne(
-        { _id: Number(id) },
+        { _id: new ObjectId(id) },
         {
           $set: {
             make: req.body.make,
             model: req.body.model,
-            year: req.body.year,
-            price: req.body.price,
+            year: Number(req.body.year),
+            price: Number(req.body.price),
             status: req.body.status,
           },
-        },
+        }
       );
 
-      res.json(result);
+      if (result.matchedCount === 0) {
+        return res.status(404).json({ error: "Car not found" });
+      }
+
+      res.json({ message: "Car updated" });
     } catch (error) {
-      console.error(error);
-      res.status(500).send("Error updating car");
+      res.status(500).json({ error: "Error updating car" });
     }
   });
 

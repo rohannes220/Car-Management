@@ -8,6 +8,11 @@ function AddCar() {
   const [price, setPrice] = useState("");
 
   async function handleSubmit() {
+    if (!make || !model || !year || !price) {
+      alert("Please fill all fields");
+      return;
+    }
+
     await fetch("http://localhost:3000/api/cars", {
       method: "POST",
       headers: {
@@ -16,8 +21,8 @@ function AddCar() {
       body: JSON.stringify({
         make,
         model,
-        year,
-        price,
+        year: Number(year),
+        price: Number(price),
       }),
     });
 
@@ -25,10 +30,9 @@ function AddCar() {
     setModel("");
     setYear("");
     setPrice("");
-
     setShowForm(false);
 
-    loadCars();
+    loadCars(); 
   }
 
   return (
@@ -36,7 +40,7 @@ function AddCar() {
       <button onClick={() => setShowForm(!showForm)}>Add Car</button>
 
       {showForm && (
-        <div className="react-form">
+        <div>
           <input
             placeholder="Make"
             value={make}

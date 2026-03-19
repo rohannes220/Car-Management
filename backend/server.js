@@ -23,17 +23,17 @@ let db;
 async function connectDB() {
   try {
     await client.connect();
-    console.log("Connected to MongoDB");
+    console.log(" Connected to MongoDB");
     db = client.db(DB_NAME);
   } catch (error) {
-    console.error("MongoDB connection failed", error);
+    console.error(" MongoDB connection failed:", error);
   }
 }
 
-await connectDB();
+connectDB().then(() => {
+  app.use("/api/cars", carsRoutes(db));
 
-app.use("/api/cars", carsRoutes(db));
-
-app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
+  app.listen(PORT, () => {
+    console.log(`🚀 Server running at http://localhost:${PORT}`);
+  });
 });

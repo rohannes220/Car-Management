@@ -46,14 +46,14 @@ async function addCar() {
 }
 
 async function deleteCar(button) {
-  let row = button.parentNode.parentNode;
+  const row = button.parentNode.parentNode;
   const id = row.getAttribute("data-id");
 
   await fetch(`http://localhost:3000/api/cars/${id}`, {
     method: "DELETE",
   });
 
-  row.remove();
+  loadCars();
 }
 
 function updateCar(button) {
@@ -89,36 +89,30 @@ async function saveUpdate(button) {
   const model = document.getElementById("editModel").value;
   const year = document.getElementById("editYear").value;
   const price = document.getElementById("editPrice").value;
+  const status = row.children[4].innerText;
 
   await fetch(`http://localhost:3000/api/cars/${id}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ make, model, year, price }),
+    body: JSON.stringify({ make, model, year, price, status }),
   });
 
-  const cells = row.querySelectorAll("td");
-
-  cells[0].innerText = make;
-  cells[1].innerText = model;
-  cells[2].innerText = year;
-  cells[3].innerText = "$" + price;
-
-  formRow.remove();
+  loadCars();
 }
 
 function totalCars() {
-  let rows = document.querySelectorAll("tbody tr");
+  const rows = document.querySelectorAll("tbody tr");
   document.getElementById("result").innerText = "Total Cars: " + rows.length;
 }
 
 function totalAvailable() {
-  let rows = document.querySelectorAll("tbody tr");
+  const rows = document.querySelectorAll("tbody tr");
   let count = 0;
 
   rows.forEach((row) => {
-    let status = row.children[4].innerText;
+    const status = row.children[4].innerText;
     if (status === "Available") count++;
   });
 
@@ -127,15 +121,16 @@ function totalAvailable() {
 }
 
 function totalSold() {
-  let rows = document.querySelectorAll("tbody tr");
+  const rows = document.querySelectorAll("tbody tr");
   let count = 0;
 
   rows.forEach((row) => {
-    let status = row.children[4].innerText;
+    const status = row.children[4].innerText;
     if (status === "Sold") count++;
   });
 
-  document.getElementById("result").innerText = "Total Sold Cars: " + count;
+  document.getElementById("result").innerText =
+    "Total Sold Cars: " + count;
 }
 
 document.addEventListener("DOMContentLoaded", loadCars);

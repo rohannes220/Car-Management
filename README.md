@@ -20,7 +20,7 @@ Instead of juggling spreadsheets or disconnected systems, this platform brings e
 
 **Image Credits**
 
-Some images used in this project were sourced from Pexels. These images are free to use under the Pexels license, which allows for personal and commercial use without attribution. They were used to enhance the visual presentation of the application.
+The image used in this project were sourced from Pexels. The Pexels license allows for personal and commercial use without attribution. It was used to enhance the visual presentation of the application.
 
 **Tech Stack**
 

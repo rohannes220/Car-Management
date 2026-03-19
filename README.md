@@ -134,12 +134,13 @@ It helped clarify:
 
 
 * Home Page
+<img width="1405" height="678" alt="Screenshot 2026-03-19 at 2 32 34 PM" src="https://github.com/user-attachments/assets/709ef889-e471-4d20-adcf-4a40e0efc988" />
 
   
 * Cars Page
+<img width="1356" height="709" alt="Screenshot 2026-03-19 at 2 44 06 PM" src="https://github.com/user-attachments/assets/45aafe50-76ce-49fb-87ea-604508ae651f" />
 
-
-  
+ 
 * Sales Page
 
 
